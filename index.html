@@ -63,7 +63,7 @@
 
     Element.prototype._attachShadow = Element.prototype.attachShadow;
     Element.prototype.attachShadow = function (init) {
-      if (this.tagName == "FLT-GLASS-PANE" && window.location.pathname == '/webPromo') {
+      if (this.tagName == "FLT-GLASS-PANE" && window.location.pathname == '/#/webPromo') {
 
         _element = document.createElement('flt-element-host-node');
         this.appendChild(_element);
