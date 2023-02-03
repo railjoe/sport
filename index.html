@@ -1,4 +1,7 @@
-<html><head>
+<!DOCTYPE html>
+<html>
+
+<head>
   <style>
     body {
       background-color: #101010;
@@ -77,21 +80,47 @@
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.ico" />
 
-  <title></title>
+  <title>mts_sport</title>
   <link rel="manifest" href="manifest.json">
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = '1228337395';
+    var serviceWorkerVersion = '3140669336';
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest/dist/hls.min.js"  type="application/javascript"></script>
   <!-- This script adds the flutter initialization JS code -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest/dist/hls.min.js" type="application/javascript"></script>
+  <script src="flutter.js" defer></script>
+</head>
 
-<body >
-  
-  
+<body>
+  <div id="loading" class="loading">
+    <div class="loading-logo"></div>
+    <div class="loading-circle"></div>
+  </div>
+  <script>
+    window.addEventListener('load', function (ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        }
+      }).then(function (engineInitializer) {
+        return engineInitializer.initializeEngine();
+      }).then(function (appRunner) {
+        return appRunner.runApp();
+      });
+    });
+    window.onload = function () {
+      setTimeout(function () {
+        var loadingIndicator = document.getElementById("loading");
+        if (loadingIndicator) {
+          loadingIndicator.remove();
+        }
+      }, 10000);
+    };
+  </script>
+</body>
 
-
-<video id="videoElement-1" playsinline="true" autoplay="true" controls src="https://d2xxqpelrb1hut.cloudfront.net/telekom_serbija/63d100d45423de23d0f7048d/venue_hls/hd_hls/hd_hls.m3u8" style="border: none; height: 100%; width: 100%;"></video></body></html>
+</html>
